@@ -1,0 +1,121 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #e581c8, #5575ac);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #3b014a;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: bold;
+    letter-spacing: 10px;
+    border: 2px solid #3b014a;
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 0 auto 40px auto;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.indice {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.columna {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.columna h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #3b014a;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #000;
+}
+
+input[type="text"], input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+input[type="submit"] {
+    background-color: #e581c8;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+input[type="submit"]:hover {
+    background-color: #d070b0;
+}
+
+.burbujas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.burbuja {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+    }
+}
+
+.volver {
+    font-size: 1.2rem;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    border: 2px solid #3b014a;
+}
