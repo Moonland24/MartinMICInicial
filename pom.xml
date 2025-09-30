@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>es.albarregas</groupId>
-    <artifactId>MartinMICInial</artifactId>
+    <artifactId>MartinMICInicial</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>MartinMICInial</name>
+    <name>MartinMICInicial</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

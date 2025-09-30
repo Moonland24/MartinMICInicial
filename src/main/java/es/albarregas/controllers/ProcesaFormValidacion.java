@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Inmaculada
  */
 @WebServlet(name = "ProcesaForm", urlPatterns = {"/procesaform"})
-public class ProcesaForm extends HttpServlet {
+public class ProcesaFormValidacion extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -87,13 +87,3 @@ public class ProcesaForm extends HttpServlet {
         }
     }
 }
-
-/*
-else if (nombre.equalsIgnoreCase("fecha_nacimiento)){"
-    String fechaInput = request.getParameter(nombre);
-    SimpleDateFormat inputFormat = SimpleDateFormat("yyy-mm-dd");
-    SimpleDateFormat outputFormat = new SimpleDateFormat ("dd-mm-yyy");
-    Date fecha = inputFormat.parse(fechaInput);
-    String fechaFormateada = outputFormat(fecha);
-    out.println("<li>" + titulo + ": " + fechaFormateada + "</li>");
-*/
