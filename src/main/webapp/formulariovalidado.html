@@ -6,25 +6,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Formulario Simple</title>
+    <title>Formulario con Validación</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="titulo">Formulario Simple</h1>
+        <h1 class="titulo">Mismo formulario validado</h1>
 
-        <form action="procesaform" method="post" class="columna">
+        <form action="procesaformvalidado" method="post" class="columna">
             <label for="nombre">Nombre:</label><br>
             <input type="text" name="nombre" id="nombre"><br><br>
 
             <label for="fecha">Fecha de nacimiento:</label><br>
-            <input type="date" name="fecha" id="fecha"><br><br>
+            <input type="date" name="fecha_nacimiento" id="fecha"><br><br>
 
             <label for="salario">Salario:</label><br>
-            <input type="number" name="salario" id="salario" step="0.01" ><br><br>
+            <input type="number" name="salario" id="salario" step="0.01"><br><br>
 
             <label for="hijos">Número de hijos:</label><br>
-            <input type="text" name="hijos" id="hijos"><br><br>
+            <input type="number" name="hijos" id="hijos"><br><br>
 
             <label>Preferencias (elige ninguna, una o varias):</label><br>
             <input type="checkbox" id="pref_cine" name="preferencias" value="cine">
