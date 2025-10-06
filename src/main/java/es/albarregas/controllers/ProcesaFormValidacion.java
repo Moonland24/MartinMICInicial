@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,107 +21,90 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ProcesaFormValidado", urlPatterns = {"/procesaformvalidado"})
 public class ProcesaFormValidacion extends HttpServlet {
+    
+     /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nombre = request.getParameter("nombre");
-        String fechaInput = request.getParameter("fecha_nacimiento");
-        String salario = request.getParameter("salario");
-        String hijos = request.getParameter("hijos");
-        String[] preferencias = request.getParameterValues("preferencias");
+        response.setContentType("text/html;charset=UTF-8");
 
         boolean hayError = false;
-        String mensajeError = "";
 
+        String nombre = request.getParameter("nombre");
         if (nombre == null || nombre.trim().isEmpty()) {
             hayError = true;
-            mensajeError += "El campo Nombre no puede estar vacío.<br>";
-            nombre = "";
-        } else if (!nombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$")) {
-            hayError = true;
-            mensajeError += "El campo Nombre solo puede contener letras y espacios.<br>";
-            nombre = "";
         }
 
-        if (fechaInput == null || fechaInput.trim().isEmpty()) {
+        String fechaInput = request.getParameter("fecha_nacimiento");
+        Date fecha = null;
+        if (fechaInput == null || fechaInput.isEmpty()) {
             hayError = true;
-            mensajeError += "El campo Fecha no puede estar vacío.<br>";
-            fechaInput = "";
+        } else {
+            try {
+                fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaInput);
+            } catch (ParseException e) {
+                hayError = true;
+            }
         }
 
+        String salario = request.getParameter("salario");
         if (salario == null || salario.trim().isEmpty()) {
             hayError = true;
-            mensajeError += "El campo Salario no puede estar vacío.<br>";
-            salario = "";
         }
 
+        String hijos = request.getParameter("hijos");
         if (hijos == null || hijos.trim().isEmpty()) {
             hayError = true;
-            mensajeError += "El campo Número de hijos no puede estar vacío.<br>";
-            hijos = "";
         }
 
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        String[] preferencias = request.getParameterValues("preferencias");
 
+        try (PrintWriter out = response.getWriter()) {
             if (hayError) {
                 out.println("<html><head><title>Formulario con errores</title></head><body>");
-                out.println("<h2>Se han encontrado errores:</h2>");
-                out.println("<p>" + mensajeError + "</p>");
+                out.println("<h2>Se han encontrado errores en el formulario</h2>");
                 out.println("<form action='procesaformvalidado' method='post'>");
-
-                out.println("Nombre: <input type='text' name='nombre' value='" + nombre + "'><br><br>");
-                out.println("Fecha de nacimiento: <input type='date' name='fecha_nacimiento' value='" + fechaInput + "'><br><br>");
-                out.println("Salario: <input type='number' name='salario' step='0.01' value='" + salario + "'><br><br>");
-                out.println("Número de hijos: <input type='number' name='hijos' value='" + hijos + "'><br><br>");
-
+                out.println("Nombre: <input type='text' name='nombre' value='" + (nombre != null ? nombre : "") + "'><br><br>");
+                out.println("Fecha de nacimiento: <input type='date' name='fecha_nacimiento' value='" + (fechaInput != null ? fechaInput : "") + "'><br><br>");
+                out.println("Salario: <input type='number' step='0.01' name='salario' value='" + (salario != null ? salario : "") + "'><br><br>");
+                out.println("Número de hijos: <input type='number' name='hijos' value='" + (hijos != null ? hijos : "") + "'><br><br>");
                 out.println("Preferencias:<br>");
                 String[] opciones = {"cine", "baile", "musica", "deporte", "viajes"};
                 for (String op : opciones) {
-                    boolean checked = false;
-                    if (preferencias != null) {
-                        for (String p : preferencias) {
-                            if (p.equals(op)) checked = true;
-                        }
-                    }
+                    boolean checked = preferencias != null && Arrays.asList(preferencias).contains(op);
                     out.println("<input type='checkbox' name='preferencias' value='" + op + "' " + (checked ? "checked" : "") + "> " + op + "<br>");
                 }
-
                 out.println("<br><input type='submit' value='Enviar'>");
                 out.println("</form>");
                 out.println("</body></html>");
-                return;
-            }
-
-            out.println("<html><head><title>Resultado Formulario</title></head><body>");
-            out.println("<h1>Datos recibidos correctamente</h1>");
-            out.println("<ul>");
-            out.println("<li>Nombre: " + nombre + "</li>");
-
-            try {
-                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-                SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
-                Date fecha = inputFormat.parse(fechaInput);
-                out.println("<li>Fecha de nacimiento: " + outputFormat.format(fecha) + "</li>");
-            } catch (ParseException e) {
-                out.println("<li>Fecha de nacimiento: formato inválido</li>");
-            }
-
-            out.println("<li>Salario: " + salario + "</li>");
-            out.println("<li>Número de hijos: " + hijos + "</li>");
-
-            if (preferencias != null) {
-                out.print("<li>Preferencias: ");
-                for (String p : preferencias) {
-                    out.print(p + " ");
+            } else {
+                out.println("<html><head><title>Resultado Formulario</title></head><body>");
+                out.println("<h1>Datos recibidos correctamente</h1>");
+                out.println("<ul>");
+                out.println("<li>Nombre: " + nombre + "</li>");
+                out.println("<li>Fecha de nacimiento: " + new SimpleDateFormat("dd-MM-yyyy").format(fecha) + "</li>");
+                out.println("<li>Salario: " + salario + "</li>");
+                out.println("<li>Número de hijos: " + hijos + "</li>");
+                if (preferencias != null) {
+                    out.print("<li>Preferencias: ");
+                    for (String p : preferencias) {
+                        out.print(p + " ");
+                    }
+                    out.println("</li>");
                 }
-                out.println("</li>");
+                out.println("</ul>");
+                out.println("<p><a href='index.html'>Volver al índice</a></p>");
+                out.println("</body></html>");
             }
-            out.println("</ul>");
-            out.println("<p><a href=\"index.html\">Volver al índice</a></p>");
-            out.println("</body></html>");
         }
     }
 }
