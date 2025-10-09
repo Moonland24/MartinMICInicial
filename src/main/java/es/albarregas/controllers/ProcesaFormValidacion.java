@@ -50,7 +50,7 @@ public class ProcesaFormValidacion extends HttpServlet {
             hayError = true;
         } else {
             try {
-                fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaInput);
+                fecha = new SimpleDateFormat("dd-MM-yyyy").parse(fechaInput);
             } catch (ParseException e) {
                 hayError = true;
             }

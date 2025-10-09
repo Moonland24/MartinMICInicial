@@ -86,7 +86,7 @@ public class ProcesaFormIntermedio extends HttpServlet {
             hayError = true;
         } else {
             try {
-                new SimpleDateFormat("yyyy-MM-dd").parse(parametros.get("fecha_nacimiento")[0]);
+                new SimpleDateFormat("dd-MM-yyyy").parse(parametros.get("fecha_nacimiento")[0]);
             } catch (ParseException e) {
                 hayError = true;
             }
