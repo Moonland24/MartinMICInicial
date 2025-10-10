@@ -17,9 +17,9 @@
 
     String genero = "Bienvenid@";
     if ("hombre".equals(sexo)) {
-        genero = "Bienvenido";
+        genero = "señor";
     } else if ("mujer".equals(sexo)) {
-        genero = "Bienvenida";
+        genero = "señora";
     }
 %>
 <!DOCTYPE html>

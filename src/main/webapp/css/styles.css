@@ -72,12 +72,6 @@ body {
     margin: auto;
     color: #3b014a;
     font-weight: bold;
-    backdrop-filter: blur(8px);
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
 }
 
 .card h1 {
