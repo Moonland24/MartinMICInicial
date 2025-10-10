@@ -102,7 +102,7 @@ public class ProcesaFormValidacion extends HttpServlet {
                     out.println("</li>");
                 }
                 out.println("</ul>");
-                out.println("<p><a href='index.html'>Volver al índice</a></p>");
+                out.println("<a href='" + request.getContextPath() + "/index.html'>Volver al índice</a>");
                 out.println("</body></html>");
             }
         }

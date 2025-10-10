@@ -7,13 +7,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <head>
     <meta charset="UTF-8">
     <title>Formulario con Validación</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <div class="container">
         <h1 class="titulo">Mismo formulario validado</h1>
 
-        <form action="procesaformintermedio" method="post" id="miFormulario" class="columna">
+        <form action="../procesaformvalidado" method="post" class="columna">
             <label for="nombre">Nombre:</label><br>
             <input type="text" name="nombre" id="nombre"><br><br>
 
@@ -46,29 +46,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </form>
 
         <div style="text-align:center; margin-top:30px;">
-            <a href="index.html" class="volver">Volver al índice</a>
+            <a href="../index.html" class="volver">Volver al índice</a>
         </div>
     </div>
-    <script>
-    (function () {
-        if (!location.search) return;
-        var params = new URLSearchParams(location.search);
-
-        ['nombre', 'fecha_nacimiento', 'salario', 'hijos'].forEach(function (name) {
-            if (params.has(name)) {
-                var el = document.querySelector('[name="' + name + '"]');
-                if (el) el.value = params.get(name);
-            }
-        });
-
-        var prefs = params.getAll('preferencias');
-        if (prefs && prefs.length) {
-            var boxes = document.querySelectorAll('input[name="preferencias"]');
-            boxes.forEach(function (box) {
-                if (prefs.indexOf(box.value) !== -1) box.checked = true;
-            });
-        }
-    })();
-    </script>
 </body>
 </html>

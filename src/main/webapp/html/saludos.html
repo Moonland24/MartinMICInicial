@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de saludo</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="burbujas">
+        <div class="burbuja" style="width:60px;height:60px;left:10%;animation-delay:0s;"></div>
+        <div class="burbuja" style="width:40px;height:40px;left:30%;animation-delay:2s;"></div>
+        <div class="burbuja" style="width:80px;height:80px;left:50%;animation-delay:4s;"></div>
+        <div class="burbuja" style="width:50px;height:50px;left:70%;animation-delay:1s;"></div>
+        <div class="burbuja" style="width:70px;height:70px;left:90%;animation-delay:3s;"></div>
+    </div>
+
+    <div class="container">
+        <h1 class="titulo">Formulario</h1>
+
+        <div class="card">
+            <form action="../jsp/saludos.jsp" method="post">
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre" required><br><br>
+
+                <label>Sexo:</label><br>
+                <input type="checkbox" name="sexo" value="hombre"> Hombre<br>
+                <input type="checkbox" name="sexo" value="mujer"> Mujer<br><br>
+
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
