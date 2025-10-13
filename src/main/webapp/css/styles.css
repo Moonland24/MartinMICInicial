@@ -157,3 +157,73 @@ a:hover {
     color: #000;
     font-weight: bold;
 }
+
+/* Contenedor principal de la calculadora */
+.calculadora-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+/* Formulario de la calculadora con estilo de tarjeta */
+.calculadora-card {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Inputs de texto */
+.calculadora-card input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+/* Botones de acción */
+.calculadora-card input[type="submit"],
+.calculadora-card button {
+    background-color: #ffffff;
+    border: 2px solid #3b014a;
+    color: #3b014a;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 10px 5px;
+}
+
+.calculadora-card input[type="submit"]:hover,
+.calculadora-card button:hover {
+    background-color: #3b014a;
+    color: white;
+}
+
+/* Mensajes de resultado y error */
+.resultado {
+    color: green;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+/* Fecha de resultado */
+.fecha {
+    font-style: italic;
+    margin-bottom: 10px;
+}
