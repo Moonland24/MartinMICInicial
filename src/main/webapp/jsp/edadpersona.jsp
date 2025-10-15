@@ -12,7 +12,6 @@
         <h1 class="titulo">Resultado</h1>
 
 <%
-    // Obtener parámetros del formulario
     String nombre = request.getParameter("nombre");
     String fechaNacimientoStr = request.getParameter("fecha_nacimiento");
 
