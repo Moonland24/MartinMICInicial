@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Cambio de monedas</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="titulo">Cambio de monedas</h1>
+        <div class="calculadora-container">
+            <div class="calculadora-card">
+                <h2>Gestor de cambio al pagar</h2>
+                <form action="../jsp/cambio.jsp" method="post">
+                    <label for="precio">Precio del producto en euros:</label><br>
+                    <input type="number" step="0.01" id="precio" name="precio" required><br>
+                    <label for="entrega">Entregado en euros:</label><br>
+                    <input type="number" step="0.01" id="entrega" name="entregado" required><br>
+                    <input type="submit" value="Validar">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
